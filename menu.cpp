@@ -2,9 +2,16 @@
 #include "error.h"
 #include "options.h"
 #include <iostream>
-//#include <stdlib.h>
 
-//drives the program
+
+//*******************************************************
+// name:
+// called by:
+// passed:
+// returns:
+// The 'name' function 'description of what it does'    *
+//                                                      *
+//*******************************************************
 
 void menu(std::string* name, std::string* boatName, float* contract, float* paidToDate, const int size){
     std::string input;
@@ -12,12 +19,14 @@ void menu(std::string* name, std::string* boatName, float* contract, float* paid
     int flag = 0;
 
     while(flag != 5){
+        std::cout << "              Main Menu\n";
+        std::cout << "----------------------------------------\n";
         std::cout << "1. Input a customer's information\n";
         std::cout << "2. Edit a customer's information\n";
         std::cout << "3. Search for contract by value\n";
         std::cout << "4. Display all contract information\n";
         std::cout << "5. Exit\n";
-        std::cout << "----------------------------------------\n";
+        std::cout << "----------------------------------------\n\n";
         getline(std::cin,input);
     
         c = checkSingleChar(input);
@@ -25,12 +34,11 @@ void menu(std::string* name, std::string* boatName, float* contract, float* paid
         
         switch(flag){
             case 1:
-            option1(name, boatName, contract, paidToDate, size);
+            addCustomer(name, boatName, contract, paidToDate, size);
             break;
 
             case 2:
-            //call option 2 funct
-            std::cout << "option 2\n";
+            editCustomer(name, boatName, contract, paidToDate, size);
             break;
 
             case 3:

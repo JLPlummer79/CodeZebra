@@ -3,6 +3,15 @@
 #include <cctype>
 #include <iostream>
 
+//*******************************************************
+// name:
+// called by:
+// passed:
+// returns:
+// The 'name' function 'description of what it does'    *
+//                                                      *
+//*******************************************************
+
 int checkIfInteger(const char &input){
         int digit;
         if(std::isdigit(input)) {
