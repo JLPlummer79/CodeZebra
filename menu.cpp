@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "error.h"
 #include "options.h"
+#include "format.h"
 #include <iostream>
 
 
@@ -43,7 +44,8 @@ void menu(std::string* name, std::string* boatName, float* contract, float* paid
 
             case 3:
              //call option 3 funct
-            std::cout << "option 3\n";
+            heading();
+            displayContractInfo(name, boatName, contract, paidToDate, size);
             break;
 
             case 4:

@@ -5,8 +5,8 @@
 int main(){
     std::string name[10] {"John Wick"};
     std::string boatName[10] {"Daisy"};
-    float contract[10] {100000.0};
-    float paidToDate[10] {1000.0};
+    float contract[10] {100000};
+    float paidToDate[10] {1000};
     const int size = 10;
     
     menu(name, boatName, contract, paidToDate, size);

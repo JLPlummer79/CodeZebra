@@ -14,5 +14,7 @@ std::string checkStringSize(const std::string &s);
 //comments
 float checkValidFloat(const std::string &s);
 
+int compareFloats(const float a, const float b);
+
 
 #endif

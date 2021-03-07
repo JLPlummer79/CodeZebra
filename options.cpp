@@ -1,5 +1,6 @@
 #include "options.h"
 #include "error.h"
+#include "format.h"
 #include <string>
 #include <iostream>
 
@@ -222,30 +223,38 @@ int editCustomerMenu(){
 // The displayContractInfo function 'description of what it does'    *
 //                                                      *
 //*******************************************************
-void displayContractInfo(std::string* name, std::string* boatName, float* contract, float* paidToDate, const int size) {
-    std::string input;
-    auto value = 0.0;
+void displayContractInfo(const std::string* name, const std::string* boatName, const float* contract, const float* paidToDate, const int size) {
+    std::string input, nums;
+    float value = 0;
+    int index = 0;
     
     std::cout << "\nEnter contract amount to search: ";
     getline(std::cin, input);
 
     value = checkValidFloat(input);
-    //call search function
-    //search function returns a string containing the digits of the desired indexes.
+    nums = matchContract(contract, size, value);
+    format(name, boatName, contract, paidToDate, size, nums);
+
+    for(auto i = 0; i < nums.size(); ++i) {
+        printMoney(contract[index]);
+    }
+
+    //call function to print out info, in a seperate cpp & h file
 }
 /*******************************************************
-// name:
-// called by:
-// passed:
-// returns:
+// name: matchContract
+// called by: displayContractInfo
+// passed: const float* contract, const int size, const float search
+// returns: const std::string
 // The 'name' function 'description of what it does'    *
 //                                                      *
 //*******************************************************/
-const std::string matchContract(float* contract, const int size, const float search){
+const std::string matchContract(const float* contract, const int size, const float search) {
     std::string validIndex;
     
-    for(auto i = 0; i < size; ++i){
-        if(contract[i] >= search){
+    for(int i = 0; i < size; ++i){
+        std::cout << contract[i] << '\t' << search << '\n';
+        if(compareFloats(contract[i], search)){
             validIndex.push_back(i);
         }
     }
