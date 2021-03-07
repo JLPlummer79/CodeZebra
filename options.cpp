@@ -27,7 +27,7 @@
 // in 4 seperate arrays and validates the data          *
 //*******************************************************
 void addCustomer(std::string *name, std::string *boatName, float* contract, float* paidToDate, const int size){
-    static int customer = 0;
+    static int customer = 1;
     int flag = 1;
     float value;
     std::string inputName, inputBName, inputContract, inputPTD;
@@ -36,18 +36,18 @@ void addCustomer(std::string *name, std::string *boatName, float* contract, floa
         exit(0);
     }
     while(flag != 0) {
-        std::cout << "Enter customer name (up to 15 characters): ";
-        getline(std::cin, inputName);
+        std::cout << "Enter customer name (up to 10 characters): ";
+        std::getline(std::cin, inputName);
         inputName = checkStringSize(inputName);
         name[customer] = inputName;
 
-        std::cout << "\nEnter boat name (up to 15 characters): ";
-        getline(std::cin, inputBName);
+        std::cout << "\nEnter boat name (up to 10 characters): ";
+        std::getline(std::cin, inputBName);
         inputBName = checkStringSize(inputBName);
         boatName[customer] = inputBName;
 
         std::cout << "\nEnter contract amount: ";
-        getline(std::cin, inputContract);
+        std::getline(std::cin, inputContract);
         value = checkValidFloat(inputContract);
         if(value == 0){
             std::cout << "Contract value invalid.\n";
@@ -56,7 +56,7 @@ void addCustomer(std::string *name, std::string *boatName, float* contract, floa
         contract[customer] = value;
 
         std::cout << "\nEnter amount paid to date: ";
-        getline(std::cin, inputPTD);
+        std::getline(std::cin, inputPTD);
         value = checkValidFloat(inputPTD);
         if(value = 0){
             std::cout << "Entered value invalid.\n";
@@ -86,9 +86,10 @@ void editCustomer(std::string *name, std::string *boatName, float* contract, flo
     int flag = 1;
     int field;
     float value;
+    
     while(flag != 0) {
         std::cout << "\nEnter customer name you wish to edit: ";
-        getline(std::cin, customer);
+        std::getline(std::cin, customer);
         
         //find & match customer index
         index = matchCustomer(name, customer, size);
@@ -103,21 +104,21 @@ void editCustomer(std::string *name, std::string *boatName, float* contract, flo
             break;
             case 1:
                 std::cout << "Enter customer name: ";
-                getline(std::cin, entry);
+                std::getline(std::cin, entry);
                 entry = checkStringSize(entry);
                 name[index] = entry;
                 flag = 0;
             break;
             case 2:
                 std::cout << "\nEnter updated boat name: ";
-                getline(std::cin,entry);
+                std::getline(std::cin,entry);
                 entry = checkStringSize(entry);
                 boatName[index] = entry;
                 flag = 0;
             break;
             case 3:
                 std::cout << "\nEnter updated contract value: ";
-                getline(std::cin, entry);
+                std::getline(std::cin, entry);
                 value = checkValidFloat(entry);
                 if(value == 0) {
                     std::cout << "Invalid contract amount.\n";
@@ -128,7 +129,8 @@ void editCustomer(std::string *name, std::string *boatName, float* contract, flo
             break;
             case 4:
                 std::cout <<"\nEnter updated paid to date amount: ";
-                getline(std::cin, entry);
+                std::getline(std::cin, entry);
+                
                 value = checkValidFloat(entry);
                 if(value == 0) {
                     std::cout << "Invalid paid to date amount.\n";
@@ -191,7 +193,8 @@ int editCustomerMenu(){
         std::cout << "4. Edit paid to date amount\n";
         std::cout << "5. Back to Main Menu\n";
         std::cout << "----------------------------------------\n\n";
-        getline(std::cin, input);
+        
+        std::getline(std::cin, input);
         //validate entry
         c = checkSingleChar(input);
         //return mechanism
@@ -229,17 +232,12 @@ void displayContractInfo(const std::string* name, const std::string* boatName, c
     int index = 0;
     
     std::cout << "\nEnter contract amount to search: ";
-    getline(std::cin, input);
+    
+    std::getline(std::cin, input);
 
     value = checkValidFloat(input);
     nums = matchContract(contract, size, value);
     format(name, boatName, contract, paidToDate, size, nums);
-
-    for(auto i = 0; i < nums.size(); ++i) {
-        printMoney(contract[index]);
-    }
-
-    //call function to print out info, in a seperate cpp & h file
 }
 /*******************************************************
 // name: matchContract
@@ -259,4 +257,8 @@ const std::string matchContract(const float* contract, const int size, const flo
         }
     }
     return validIndex;
+}
+
+void displayAllContracts(const std::string* name, const std::string* boatName, const float* contract, const float* paidToDate, const int size){
+    
 }

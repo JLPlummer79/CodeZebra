@@ -20,7 +20,7 @@ void menu(std::string* name, std::string* boatName, float* contract, float* paid
     int flag = 0;
 
     while(flag != 5){
-        std::cout << "              Main Menu\n";
+        std::cout << "\n\n              Main Menu\n";
         std::cout << "----------------------------------------\n";
         std::cout << "1. Input a customer's information\n";
         std::cout << "2. Edit a customer's information\n";
@@ -28,7 +28,7 @@ void menu(std::string* name, std::string* boatName, float* contract, float* paid
         std::cout << "4. Display all contract information\n";
         std::cout << "5. Exit\n";
         std::cout << "----------------------------------------\n\n";
-        getline(std::cin,input);
+        std::getline(std::cin,input);
     
         c = checkSingleChar(input);
         flag = checkIfInteger(c);
@@ -44,7 +44,6 @@ void menu(std::string* name, std::string* boatName, float* contract, float* paid
 
             case 3:
              //call option 3 funct
-            heading();
             displayContractInfo(name, boatName, contract, paidToDate, size);
             break;
 

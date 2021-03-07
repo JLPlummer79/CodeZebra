@@ -29,9 +29,9 @@ char checkSingleChar(const std::string &s){
 
 std::string checkStringSize(const std::string &s){
     std::string ts;
-    if(s.size() > 15){
-        for(size_t i=0; i < 15; ++i){
-            ts[i] = s[i];
+    if(s.length() >= 10) {
+        for(int i = 0; i < 10; ++i) {
+            ts.push_back(s[i]);
         }
         return ts;
     }
@@ -42,7 +42,10 @@ std::string checkStringSize(const std::string &s){
 
 float checkValidFloat(const std::string &s) {
     int decimal_flag = 0;
-    for (auto j = 0; j < s.size(); ++j) {
+    if(s.empty()) {
+        return 0;
+    }
+    for(auto j = 0; j < s.size(); ++j) {
         if(ispunct(s[j])) {
             ++decimal_flag;
         }

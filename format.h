@@ -7,6 +7,6 @@ void format(const std::string* name, const std::string* boatName, const float* c
 
 void heading();
 
-void printMoney(const float contra);
+void format_print(std::string name, std::string bName, float contra, float ptd);
 
 #endif
