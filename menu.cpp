@@ -6,12 +6,15 @@
 
 
 //*******************************************************
-// name:
-// called by:
-// passed:
-// returns:
-// The 'name' function 'description of what it does'    *
-//                                                      *
+// name: menu
+// called by: main
+// passed: std::string* name, std::string* boatName, 
+// passed: float* contract, float* paidToDate
+// passed: const int size
+// returns: nothing
+// The menu function controls the flow of the program   *
+// using an initial Main Menu, validating user input and*
+// functions to process user requests and enter data    *
 //*******************************************************
 
 void menu(std::string* name, std::string* boatName, float* contract, float* paidToDate, const int size){
@@ -19,7 +22,7 @@ void menu(std::string* name, std::string* boatName, float* contract, float* paid
     char c;
     int flag = 0;
 
-    while(flag != 5){
+    while(flag != 5) {
         std::cout << "\n\n              Main Menu\n";
         std::cout << "----------------------------------------\n";
         std::cout << "1. Input a customer's information\n";
@@ -32,6 +35,7 @@ void menu(std::string* name, std::string* boatName, float* contract, float* paid
     
         c = checkSingleChar(input);
         flag = checkIfInteger(c);
+        //border();
         
         switch(flag){
             case 1:
@@ -43,17 +47,16 @@ void menu(std::string* name, std::string* boatName, float* contract, float* paid
             break;
 
             case 3:
-             //call option 3 funct
             displayContractInfo(name, boatName, contract, paidToDate, size);
             break;
 
             case 4:
-             //call option 4 funct
-            std::cout << "option 4\n";
+            displayAllContracts(name,boatName, contract, paidToDate, size);
             break;
 
             case 5:
             std::cout << "Exiting program\n";
+            border();
             std::exit(0);
 
             default:

@@ -5,15 +5,6 @@
 #include <iostream>
 
 //*******************************************************
-// name:
-// called by:
-// passed:
-// returns:
-// The 'name' function 'description of what it does'    *
-//                                                      *
-//*******************************************************
-
-//*******************************************************
 // name:        addCustomer
 // called by:   menu
 // passed:      std::string *name, std::string *boatName, 
@@ -58,7 +49,8 @@ void addCustomer(std::string *name, std::string *boatName, float* contract, floa
         std::cout << "\nEnter amount paid to date: ";
         std::getline(std::cin, inputPTD);
         value = checkValidFloat(inputPTD);
-        if(value = 0){
+
+        if(value == 0){
             std::cout << "Entered value invalid.\n";
             continue;
         }
@@ -130,8 +122,8 @@ void editCustomer(std::string *name, std::string *boatName, float* contract, flo
             case 4:
                 std::cout <<"\nEnter updated paid to date amount: ";
                 std::getline(std::cin, entry);
-                
                 value = checkValidFloat(entry);
+                
                 if(value == 0) {
                     std::cout << "Invalid paid to date amount.\n";
                     continue;
@@ -219,12 +211,16 @@ int editCustomerMenu(){
 //*******************************************************
 // name: displayContractInfo
 // called by: menu
-// passed:      std::string *name, std::string *boatName, 
-// passed:      float* contract, float* paidToDate, 
-// passed:      const int size
+// passed: std::string *name, std::string *boatName, 
+// passed: float* contract, float* paidToDate, 
+// passed: const int size
 // returns:     nothing
-// The displayContractInfo function 'description of what it does'    *
-//                                                      *
+// The displayContractInfo function prompts the user to *
+// enter a minimum amount to search for in the contracts*
+// array, verifies the user input, then calls another   *
+// function to do the search, then takes the result and *
+// calls another function to display (on screen) the    *
+// user requested data.                                 *
 //*******************************************************
 void displayContractInfo(const std::string* name, const std::string* boatName, const float* contract, const float* paidToDate, const int size) {
     std::string input, nums;
@@ -241,24 +237,58 @@ void displayContractInfo(const std::string* name, const std::string* boatName, c
 }
 /*******************************************************
 // name: matchContract
-// called by: displayContractInfo
-// passed: const float* contract, const int size, const float search
+// called by: displayContractInfo, displayAllContracts  
+// passed: const float* contract, const int size, 
+// passed: const float search
 // returns: const std::string
-// The 'name' function 'description of what it does'    *
-//                                                      *
+// The matchContract function takes the array contract  *
+// and checks if an element meets the user chriteria.   *
+// When it does, that index value is saved in validIndex*
+// When the traversal is done, validIndex is returned   *
 //*******************************************************/
 const std::string matchContract(const float* contract, const int size, const float search) {
     std::string validIndex;
     
     for(int i = 0; i < size; ++i){
-        std::cout << contract[i] << '\t' << search << '\n';
+
         if(compareFloats(contract[i], search)){
             validIndex.push_back(i);
         }
     }
     return validIndex;
 }
-
+//*******************************************************
+// name: displayAllContracts
+// called by: menu
+// passed: const std::string* name, 
+// passed: const std::string* boatName, 
+// passed: const float* contract, 
+// passed: const float* paidToDate, const int size
+// returns: nothing
+// The displayAllContracts function displays all data in*
+// the argument arrays, then displays the data, next    *
+// totals & displays the data of the contract array     *
+//*******************************************************
 void displayAllContracts(const std::string* name, const std::string* boatName, const float* contract, const float* paidToDate, const int size){
+    std::string num = matchContract(contract, size, 1);
+    float total;
+    format(name, boatName, contract, paidToDate, size, num);
+    total =  totalOfAllContracts(contract, size);
     
+    formatTotal(total);
+}
+//*******************************************************
+// name: totalOfAllContracts
+// called by: displayAllContracts
+// passed: const float* contract, const int size
+// returns: const float
+// The totalOfAllContracts function calculates the sum  *
+// of all the contracts and returns the sum             *
+//*******************************************************
+const float totalOfAllContracts(const float* contract, const int size){
+    float sum = 0;
+    for(auto i = 0; i < size; ++i){
+        sum = sum + contract[i];
+    }
+    return sum;
 }

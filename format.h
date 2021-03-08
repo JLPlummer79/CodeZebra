@@ -7,6 +7,10 @@ void format(const std::string* name, const std::string* boatName, const float* c
 
 void heading();
 
-void format_print(std::string name, std::string bName, float contra, float ptd);
+void format_print(std::string name, const std::string bName, const float contra, const float ptd);
+
+void formatTotal(const float total);
+
+void border();
 
 #endif

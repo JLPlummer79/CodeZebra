@@ -17,7 +17,7 @@ void displayContractInfo(const std::string* name, const std::string* boatName, c
 const std::string matchContract(const float* contract, const int size, const float search);
 
 //comments
-int* option4(std::string* name, std::string* boatName, std::string* contract, std::string* paidToDate, const int size);
+void displayAllContracts(const std::string* name, const std::string* boatName, const float* contract, const float* paidToDate, const int size);
 
-
+const float totalOfAllContracts(const float* contract, const int size);
 #endif
