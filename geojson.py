@@ -1,6 +1,6 @@
 #geojson.py more json parsing
-#this would work great, but google now has an API key requirement, most likely
-#to prevent mischief... boo!
+#this would work great, but google now has an API key requirement, money!
+
 
 import urllib.request, urllib.parse, urllib.error
 import json
