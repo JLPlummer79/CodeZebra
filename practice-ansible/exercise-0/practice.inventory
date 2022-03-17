@@ -1,0 +1,5 @@
+# Practice Inventory File for ansible exercises
+# Jesse Plummer March 17, 2022
+
+target1 ansible_host=172.17.86.166 ansible_user=root ansible_ssh_pass=osboxes.org
+target2 ansible_host=172.17.86.138 ansible_user=root ansible_ssh_pass=osboxes.org
