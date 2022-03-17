@@ -2,7 +2,8 @@
 
 -
   name: Check connectivity to target servers
-  task: 
+  hosts: all
+  tasks: 
     - 
       name: Ping test
       ping:
