@@ -9,7 +9,7 @@
         #name: Copy file 
         #ansible.builtin.copy:
         src: /etc/test.txt
-        dest: /proof/foo.conf
+        dest: /etc/foo.txt
         owner: jplummer
         group: jplummer
         mode: '0644'
