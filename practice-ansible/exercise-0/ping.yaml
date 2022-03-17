@@ -1,0 +1,8 @@
+#Ansible playbook for ping test
+
+-
+  name: Check connectivity to target servers
+  task: 
+    - 
+      name: Ping test
+      ping:
