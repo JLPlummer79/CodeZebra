@@ -1,0 +1,15 @@
+# Playbook to copy a file from Ansible server to hosts
+# Note: uses a plugin ansible.builtin.copy
+-
+  name: Copy file to hosts
+  hosts: all
+  tasks:
+    -
+      copy:
+        #name: Copy file 
+        #ansible.builtin.copy:
+        src: /etc/test.txt
+        dest: /proof/foo.conf
+        owner: jplummer
+        group: jplummer
+        mode: '0644'
